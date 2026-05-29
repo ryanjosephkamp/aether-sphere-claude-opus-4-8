@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="theme-color" content="#01030a" />
+    <meta
+      name="description"
+      content="AetherSphere — an interactive 3D planetary sandbox. Explore a procedural Earth or Mars, then unleash asteroids, meteors and rockets for realistic impacts, cratering and permanent surface deformation."
+    />
+    <title>AetherSphere — 3D Planetary Sandbox Simulator</title>
+  </head>
+  <body>
+    <!-- WebGL canvas (fills the viewport) -->
+    <canvas id="scene"></canvas>
+
+    <!-- Loading overlay shown while procedural planet generation runs -->
+    <div id="loading" class="loading">
+      <div class="loading__orb"></div>
+      <div class="loading__text">Generating planet…</div>
+    </div>
+
+    <!-- Title / brand -->
+    <header class="brand">
+      <h1 class="brand__title">Aether<span>Sphere</span></h1>
+      <p class="brand__tag">3D Planetary Sandbox</p>
+    </header>
+
+    <!-- Live info / stats panel -->
+    <section class="panel panel--info" id="info-panel" aria-label="Simulation statistics">
+      <div class="info-row"><span>FPS</span><b id="stat-fps">–</b></div>
+      <div class="info-row"><span>Objects</span><b id="stat-objects">0</b></div>
+      <div class="info-row"><span>Impacts</span><b id="stat-impacts">0</b></div>
+      <div class="info-divider"></div>
+      <div class="info-row"><span>Planet</span><b id="stat-planet">Earth</b></div>
+      <div class="info-row"><span>Radius</span><b id="stat-radius">–</b></div>
+      <div class="info-row"><span>Gravity</span><b id="stat-gravity">–</b></div>
+      <div class="info-row"><span>Day</span><b id="stat-day">–</b></div>
+      <div class="info-row info-row--source">
+        <span id="stat-source">NASA Fact Sheet</span>
+      </div>
+    </section>
+
+    <!-- Main control panel -->
+    <section class="panel panel--controls" id="control-panel" aria-label="Simulation controls">
+      <button class="panel__collapse" id="toggle-controls" aria-label="Collapse controls">⟨</button>
+
+      <div class="control-group">
+        <label for="planet-select">Planet</label>
+        <select id="planet-select"></select>
+      </div>
+
+      <div class="control-group">
+        <div class="row-between">
+          <label for="autorotate">Auto-rotate</label>
+          <input type="checkbox" id="autorotate" checked />
+        </div>
+        <label for="rotate-speed" class="sub"
+          >Rotation speed <span id="rotate-speed-val">1.0×</span></label
+        >
+        <input type="range" id="rotate-speed" min="0" max="3" step="0.1" value="1" />
+      </div>
+
+      <div class="control-divider"></div>
+
+      <div class="control-group">
+        <label>Projectile</label>
+        <div class="seg" id="proj-type" role="group" aria-label="Projectile type">
+          <button data-type="asteroid" class="seg__btn is-active">☄ Asteroid</button>
+          <button data-type="meteor" class="seg__btn">✦ Meteor</button>
+          <button data-type="rocket" class="seg__btn">🚀 Rocket</button>
+        </div>
+        <label for="launch-speed" class="sub"
+          >Launch speed <span id="launch-speed-val">3.0</span></label
+        >
+        <input type="range" id="launch-speed" min="1" max="8" step="0.1" value="3" />
+        <p class="hint">Click the planet to fire · or press <kbd>Space</kbd> to drop one</p>
+      </div>
+
+      <div class="control-divider"></div>
+
+      <div class="control-group">
+        <div class="row-between">
+          <button class="btn btn--primary" id="pause-btn">⏸ Pause</button>
+          <button class="btn" id="reset-surface">Reset surface</button>
+        </div>
+        <label for="sim-speed" class="sub">Sim speed <span id="sim-speed-val">1.0×</span></label>
+        <input type="range" id="sim-speed" min="0.1" max="3" step="0.1" value="1" />
+        <label for="gravity" class="sub">Gravity <span id="gravity-val">1.0×</span></label>
+        <input type="range" id="gravity" min="0.1" max="3" step="0.1" value="1" />
+      </div>
+
+      <div class="control-divider"></div>
+
+      <div class="control-group">
+        <label for="quality">Quality</label>
+        <select id="quality">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <div class="control-divider"></div>
+
+      <div class="control-group">
+        <div class="btn-grid">
+          <button class="btn" id="save-btn">💾 Save</button>
+          <button class="btn" id="load-btn">📂 Load</button>
+          <button class="btn" id="export-btn">⬇ Export</button>
+          <button class="btn" id="import-btn">⬆ Import</button>
+        </div>
+        <input type="file" id="import-file" accept="application/json" hidden />
+      </div>
+    </section>
+
+    <!-- Help button + modal -->
+    <button class="help-btn" id="help-btn" aria-label="Help">?</button>
+    <div class="modal" id="help-modal" hidden>
+      <div class="modal__card">
+        <button class="modal__close" id="help-close" aria-label="Close help">✕</button>
+        <h2>How to play</h2>
+        <ul>
+          <li><b>Orbit:</b> drag with the mouse (or one finger).</li>
+          <li><b>Zoom:</b> scroll wheel (or pinch).</li>
+          <li><b>Pan:</b> right-drag (or two fingers).</li>
+          <li>
+            <b>Fire:</b> pick a projectile, then <b>click the planet</b> to launch it from the
+            camera.
+          </li>
+          <li><b>Drop:</b> press <kbd>Space</kbd> to release a projectile from high orbit.</li>
+          <li><b>Pause:</b> press <kbd>P</kbd> or the Pause button.</li>
+          <li>
+            Impacts leave <b>permanent craters</b> — use <b>Save</b> to keep your battered world.
+          </li>
+        </ul>
+        <p class="modal__note">
+          Planetary facts are sourced from public-domain NASA fact sheets. Built with Three.js.
+        </p>
+      </div>
+    </div>
+
+    <!-- Toast notifications -->
+    <div class="toast" id="toast" hidden></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
