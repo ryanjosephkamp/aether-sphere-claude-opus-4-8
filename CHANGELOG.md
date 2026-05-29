@@ -25,6 +25,7 @@ All notable changes to **AetherSphere** are documented here. Format inspired by 
 
 **Changed**
 - `vite.config.js` base path now keyed off the Vite `command` (not `NODE_ENV`) so the GitHub Pages subpath is applied in every production build, including CI.
+- `.github/workflows/deploy.yml` sets `configure-pages` `enablement: true` so the workflow auto-enables GitHub Pages (Actions source) on its first run on `main`, requiring no manual repository configuration.
 - Planet fragment shader blends smooth sphere normals with screen-space relief normals to eliminate faceting while keeping crater/mountain relief lit.
 - Cloud opacity softened (0.9 → 0.62) for a more natural look.
 - `TextureFactory` land normalization fixed for ocean-less worlds (Mars/Moon) so terrain palettes no longer saturate to the polar-cap color; snow peaks restricted to worlds with a hydrosphere.

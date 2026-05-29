@@ -38,7 +38,7 @@ Legend: ⬜ Not started · 🟡 In progress · ✅ Done · ⛔ Blocked
 - Persistence: localStorage save/load + JSON export/import (including deformation).
 - UI: glassmorphism overlay, planet selector, stats/FPS, NASA facts, help, responsive layout.
 - Docs: professional `README.md`, `ARCHITECTURE.md`, `QA-CHECKLIST.md`, `CONTRIBUTING.md`, `DATA-SOURCES.md`, `LICENSE`, screenshots.
-- CI/CD: `ci.yml` (lint + format + test + build) and `deploy.yml` (build → GitHub Pages).
+- CI/CD: `ci.yml` (lint + format + test + build) and `deploy.yml` (build → GitHub Pages, auto-enabling Pages via `configure-pages` `enablement: true`).
 - Verified all three planets (Earth/Mars/Moon), impacts, and persistence in-browser.
 
 ## 🟡 In-Progress Tasks
