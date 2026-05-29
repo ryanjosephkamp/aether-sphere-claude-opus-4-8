@@ -4,20 +4,21 @@ node_modules/
 # Build outputs
 dist/
 build/
+coverage/
 
 # Logs
 *.log
 npm-debug.log*
 
-# Environment variables
+# Env
 .env
 
-# Editor / OS files
+# Editor / OS
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
 
-# Temporary files
+# Temp
 *.tmp
 *.temp

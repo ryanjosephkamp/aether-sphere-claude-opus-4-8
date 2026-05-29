@@ -1,0 +1,44 @@
+{
+  "name": "aethersphere",
+  "version": "1.0.0",
+  "description": "AetherSphere — a 3D planetary sandbox simulator: explore a beautiful procedural Earth or Mars, then unleash asteroids, meteors, and rockets to watch realistic impacts, cratering, debris, and permanent surface deformation.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [
+    "threejs",
+    "webgl",
+    "simulation",
+    "planet",
+    "sandbox",
+    "physics",
+    "earth",
+    "mars",
+    "space"
+  ],
+  "author": "AetherSphere contributors",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0",
+    "jsdom": "^25.0.1",
+    "prettier": "^3.4.2",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "three": "^0.171.0"
+  }
+}
