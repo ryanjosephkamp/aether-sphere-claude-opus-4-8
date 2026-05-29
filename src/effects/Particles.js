@@ -22,12 +22,8 @@ export class ParticleSystem {
     this._activeCount = 0;
 
     const geo = new THREE.BufferGeometry();
-    this.posAttr = new THREE.BufferAttribute(this.positions, 3).setUsage(
-      THREE.DynamicDrawUsage
-    );
-    this.colAttr = new THREE.BufferAttribute(this.colors, 3).setUsage(
-      THREE.DynamicDrawUsage
-    );
+    this.posAttr = new THREE.BufferAttribute(this.positions, 3).setUsage(THREE.DynamicDrawUsage);
+    this.colAttr = new THREE.BufferAttribute(this.colors, 3).setUsage(THREE.DynamicDrawUsage);
     geo.setAttribute('position', this.posAttr);
     geo.setAttribute('color', this.colAttr);
     geo.setDrawRange(0, this.max);

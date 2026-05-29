@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { PLANETS, PLANET_ORDER, getPlanetConfig, DEFAULT_PLANET } from '../src/planet/PlanetConfig.js';
+import {
+  PLANETS,
+  PLANET_ORDER,
+  getPlanetConfig,
+  DEFAULT_PLANET,
+} from '../src/planet/PlanetConfig.js';
 
 describe('PlanetConfig factual data', () => {
   it('exposes the expected planets in order', () => {
@@ -36,7 +41,16 @@ describe('PlanetConfig factual data', () => {
   });
 
   it('every planet defines a full color palette', () => {
-    const keys = ['deepOcean', 'shallowOcean', 'beach', 'lowland', 'highland', 'mountain', 'snow', 'ice'];
+    const keys = [
+      'deepOcean',
+      'shallowOcean',
+      'beach',
+      'lowland',
+      'highland',
+      'mountain',
+      'snow',
+      'ice',
+    ];
     for (const id of PLANET_ORDER) {
       for (const k of keys) {
         expect(Array.isArray(PLANETS[id].palette[k])).toBe(true);

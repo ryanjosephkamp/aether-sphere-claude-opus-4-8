@@ -118,7 +118,12 @@ class App {
     this.particles = new ParticleSystem(this.settings.preset.maxParticles);
     this.scene.scene.add(this.particles.object3d);
 
-    this.impacts = new ImpactSystem(this.scene.scene, this.planet, this.particles, this.settings.preset);
+    this.impacts = new ImpactSystem(
+      this.scene.scene,
+      this.planet,
+      this.particles,
+      this.settings.preset
+    );
 
     this._updateSun(0);
     this.ui.setPlanetFacts(config);
@@ -294,12 +299,14 @@ class App {
         if (Number.isFinite(state.sim.timeScale)) {
           this.clock.timeScale = state.sim.timeScale;
           document.getElementById('sim-speed').value = state.sim.timeScale;
-          document.getElementById('sim-speed-val').textContent = `${state.sim.timeScale.toFixed(1)}×`;
+          document.getElementById('sim-speed-val').textContent =
+            `${state.sim.timeScale.toFixed(1)}×`;
         }
         if (Number.isFinite(state.sim.gravityMultiplier)) {
           this.physics.gravityMultiplier = state.sim.gravityMultiplier;
           document.getElementById('gravity').value = state.sim.gravityMultiplier;
-          document.getElementById('gravity-val').textContent = `${state.sim.gravityMultiplier.toFixed(1)}×`;
+          document.getElementById('gravity-val').textContent =
+            `${state.sim.gravityMultiplier.toFixed(1)}×`;
         }
       }
     };

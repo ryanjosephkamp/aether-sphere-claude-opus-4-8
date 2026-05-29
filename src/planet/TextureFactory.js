@@ -145,7 +145,7 @@ export class TextureFactory {
           const habit = s.elevation > config.seaLevel && s.elevation < 0.4 && lat < 0.72;
           if (habit) {
             const density = noise.fbm(dir[0] * 22, dir[1] * 22, dir[2] * 22, 3);
-            if (density > 0.18 && rng() < 0.10 + density * 0.25) {
+            if (density > 0.18 && rng() < 0.1 + density * 0.25) {
               const b = 120 + rng() * 135;
               nr = b;
               ng = b * 0.85;

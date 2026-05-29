@@ -3,9 +3,7 @@ import { Heightfield, craterProfile, HEIGHTFIELD_VERSION } from '../src/planet/H
 
 /** Build a tiny set of vertex directions: +X, -X, +Y, -Y, +Z, -Z. */
 function axisDirections() {
-  return new Float32Array([
-    1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1,
-  ]);
+  return new Float32Array([1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1]);
 }
 
 describe('craterProfile', () => {

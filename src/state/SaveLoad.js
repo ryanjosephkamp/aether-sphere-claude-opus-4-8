@@ -16,8 +16,7 @@ export class SaveLoad {
   constructor(storage) {
     // Prefer injected storage; fall back to localStorage when available.
     this.storage =
-      storage ||
-      (typeof localStorage !== 'undefined' ? localStorage : new MemoryStorage());
+      storage || (typeof localStorage !== 'undefined' ? localStorage : new MemoryStorage());
   }
 
   /**

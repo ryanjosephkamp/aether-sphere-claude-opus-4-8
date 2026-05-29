@@ -47,8 +47,7 @@ export function detectQuality() {
 
 export class Settings {
   constructor(storage) {
-    this.storage =
-      storage || (typeof localStorage !== 'undefined' ? localStorage : null);
+    this.storage = storage || (typeof localStorage !== 'undefined' ? localStorage : null);
     this.prefs = {
       quality: detectQuality(),
       autoRotate: true,

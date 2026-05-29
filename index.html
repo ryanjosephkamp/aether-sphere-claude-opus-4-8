@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <meta name="theme-color" content="#01030a" />
     <meta
       name="description"
@@ -55,7 +58,9 @@
           <label for="autorotate">Auto-rotate</label>
           <input type="checkbox" id="autorotate" checked />
         </div>
-        <label for="rotate-speed" class="sub">Rotation speed <span id="rotate-speed-val">1.0×</span></label>
+        <label for="rotate-speed" class="sub"
+          >Rotation speed <span id="rotate-speed-val">1.0×</span></label
+        >
         <input type="range" id="rotate-speed" min="0" max="3" step="0.1" value="1" />
       </div>
 
@@ -68,7 +73,9 @@
           <button data-type="meteor" class="seg__btn">✦ Meteor</button>
           <button data-type="rocket" class="seg__btn">🚀 Rocket</button>
         </div>
-        <label for="launch-speed" class="sub">Launch speed <span id="launch-speed-val">3.0</span></label>
+        <label for="launch-speed" class="sub"
+          >Launch speed <span id="launch-speed-val">3.0</span></label
+        >
         <input type="range" id="launch-speed" min="1" max="8" step="0.1" value="3" />
         <p class="hint">Click the planet to fire · or press <kbd>Space</kbd> to drop one</p>
       </div>
@@ -120,10 +127,15 @@
           <li><b>Orbit:</b> drag with the mouse (or one finger).</li>
           <li><b>Zoom:</b> scroll wheel (or pinch).</li>
           <li><b>Pan:</b> right-drag (or two fingers).</li>
-          <li><b>Fire:</b> pick a projectile, then <b>click the planet</b> to launch it from the camera.</li>
+          <li>
+            <b>Fire:</b> pick a projectile, then <b>click the planet</b> to launch it from the
+            camera.
+          </li>
           <li><b>Drop:</b> press <kbd>Space</kbd> to release a projectile from high orbit.</li>
           <li><b>Pause:</b> press <kbd>P</kbd> or the Pause button.</li>
-          <li>Impacts leave <b>permanent craters</b> — use <b>Save</b> to keep your battered world.</li>
+          <li>
+            Impacts leave <b>permanent craters</b> — use <b>Save</b> to keep your battered world.
+          </li>
         </ul>
         <p class="modal__note">
           Planetary facts are sourced from public-domain NASA fact sheets. Built with Three.js.

@@ -28,12 +28,7 @@ export class SceneManager {
 
     this.scene = new THREE.Scene();
 
-    this.camera = new THREE.PerspectiveCamera(
-      50,
-      this._aspect(),
-      0.01,
-      2000
-    );
+    this.camera = new THREE.PerspectiveCamera(50, this._aspect(), 0.01, 2000);
     this.camera.position.set(0, 1.2, 3.2);
 
     // The "sun": a directional light driving day/night + lighting projectiles.

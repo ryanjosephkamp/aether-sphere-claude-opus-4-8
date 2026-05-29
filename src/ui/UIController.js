@@ -97,9 +97,7 @@ export class UIController {
     const panel = this.$('control-panel');
     this.$('toggle-controls').addEventListener('click', () => {
       panel.classList.toggle('is-collapsed');
-      this.$('toggle-controls').textContent = panel.classList.contains('is-collapsed')
-        ? '⟩'
-        : '⟨';
+      this.$('toggle-controls').textContent = panel.classList.contains('is-collapsed') ? '⟩' : '⟨';
     });
 
     // Help modal.

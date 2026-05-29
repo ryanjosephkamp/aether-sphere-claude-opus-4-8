@@ -28,7 +28,12 @@ body {
   overflow: hidden;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   user-select: none;
   touch-action: none;
@@ -158,7 +163,9 @@ body {
   width: 268px;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 .panel--controls.is-collapsed {
   transform: translateX(calc(-100% + 34px));
@@ -218,7 +225,10 @@ select,
   padding: 8px 10px;
   font-size: 13px;
   cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.05s ease;
 }
 select:hover,
 .btn:hover {
@@ -381,7 +391,9 @@ kbd {
   font-size: 13px;
   box-shadow: var(--shadow);
   opacity: 0;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 .toast.is-visible {
   opacity: 1;
